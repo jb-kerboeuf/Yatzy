@@ -84,35 +84,35 @@ public class Yatzy {
     private static int nOfAKind(int n, Map<Integer, Integer> numberCounts) {
         for (int dieValue = 6; dieValue > 0; dieValue--) {
             if (numberCounts.get(dieValue) >= n) {
-                return dieValue * n;
+                return dieValue;
             }
         }
         return 0;
     }
 
     public int pair() {
-        return nOfAKind(2, getNumberCounts());
+        return nOfAKind(2, getNumberCounts()) * 2;
     }
 
     public int twoPairs() {
         Map<Integer, Integer> numberCounts = getNumberCounts();
-        int scoreHighestPair = nOfAKind(2, numberCounts);
-        if (scoreHighestPair != 0) {
+        int highestPair = nOfAKind(2, numberCounts);
+        if (highestPair != 0) {
             // we remove the highestPair dice values so we don't get the same result for secondHighestPair
-            numberCounts.replace(scoreHighestPair / 2, 0);
-            int scoreSecondHighestPair = nOfAKind(2, numberCounts);
-            if (scoreSecondHighestPair != 0)
-                return scoreHighestPair + scoreSecondHighestPair;
+            numberCounts.replace(highestPair, 0);
+            int secondHighestPair = nOfAKind(2, numberCounts);
+            if (secondHighestPair != 0)
+                return highestPair * 2 + secondHighestPair * 2;
         }
         return 0;
     }
 
     public int threeOfAKind() {
-        return nOfAKind(3, getNumberCounts());
+        return nOfAKind(3, getNumberCounts()) * 3;
     }
 
     public int fourOfAKind() {
-        return nOfAKind(4, getNumberCounts());
+        return nOfAKind(4, getNumberCounts()) * 4;
     }
 
     public int smallStraight() {
@@ -139,13 +139,13 @@ public class Yatzy {
 
     public int fullHouse() {
         Map<Integer, Integer> numberCounts = getNumberCounts();
-        int scoreThreeOfAKind = nOfAKind(3, numberCounts);
-        if (scoreThreeOfAKind != 0) {
+        int threeOfAKind = nOfAKind(3, numberCounts);
+        if (threeOfAKind != 0) {
             // we remove the threeOfAKind dice values so we don't get the same result for the pair
-            numberCounts.replace(scoreThreeOfAKind / 3, 0);
-            int scorePair = nOfAKind(2, numberCounts);
-            if (scorePair != 0)
-                return scoreThreeOfAKind + scorePair;
+            numberCounts.replace(threeOfAKind, 0);
+            int pair = nOfAKind(2, numberCounts);
+            if (pair != 0)
+                return threeOfAKind * 3 + pair * 2;
         }
         return 0;
     }
