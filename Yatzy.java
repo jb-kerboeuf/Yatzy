@@ -102,16 +102,17 @@ public class Yatzy {
     }
 
     public int twoPairs() {
-        int[] tallies = getTallies();
-        int n = 0;
+        Map<Integer, Integer> numberCounts = getNumberCounts();
+        int pairs = 0;
         int score = 0;
-        for (int i = 0; i < 6; i += 1)
-            if (tallies[6 - i - 1] >= 2) {
-                n++;
-                score += (6 - i);
+        for (int highestPair = 6; highestPair > 0; highestPair--) {
+            if (numberCounts.get(highestPair) >= 2) {
+                pairs ++;
+                score += highestPair * 2;
             }
-        if (n == 2)
-            return score * 2;
+        }
+        if (pairs == 2)
+            return score;
         else
             return 0;
     }
