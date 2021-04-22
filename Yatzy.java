@@ -91,7 +91,7 @@ public class Yatzy {
         return numberCounts;
     }
 
-    private int nOfAKind(int n, Map<Integer, Integer> numberCounts) {
+    private static int nOfAKind(int n, Map<Integer, Integer> numberCounts) {
         for (int dieValue = 6; dieValue > 0; dieValue--) {
             if (numberCounts.get(dieValue) >= n) {
                 return dieValue * n;
