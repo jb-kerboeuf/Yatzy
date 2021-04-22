@@ -26,14 +26,14 @@ public class YatzyTest {
 
     @Test
     public void twos_scores_sum_of_twos() {
-        assertEquals(4, Yatzy.twos(1, 2, 3, 2, 6));
-        assertEquals(10, Yatzy.twos(2, 2, 2, 2, 2));
+        assertEquals(4, new Yatzy(1, 2, 3, 2, 6).twos());
+        assertEquals(10, new Yatzy(2, 2, 2, 2, 2).twos());
     }
 
     @Test
     public void threes_scores_sum_of_threes() {
-        assertEquals(6, Yatzy.threes(1, 2, 3, 2, 3));
-        assertEquals(12, Yatzy.threes(2, 3, 3, 3, 3));
+        assertEquals(6, new Yatzy(1, 2, 3, 2, 3).threes());
+        assertEquals(12, new Yatzy(2, 3, 3, 3, 3).threes());
     }
 
     @Test
