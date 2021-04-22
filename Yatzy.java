@@ -19,13 +19,13 @@ public class Yatzy {
         return sum;
     }
 
-    public static int yatzy(int... dice) {
-        int[] counts = new int[6];
-        for (int die : dice)
-            counts[die - 1]++;
-        for (int i = 0; i != 6; i++)
-            if (counts[i] == 5)
-                return 50;
+    public int yatzy() {
+        if (dice[0] == dice[1] &&
+            dice[1] == dice[2] &&
+            dice[2] == dice[3] &&
+            dice[3] == dice[4]) {
+            return 50;
+        }
         return 0;
     }
 
