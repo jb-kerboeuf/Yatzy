@@ -1,3 +1,4 @@
+import java.util.Map;
 public class Yatzy {
 
     protected int[] dice;
@@ -74,12 +75,29 @@ public class Yatzy {
         return tallies;
     }
 
+    private Map<Integer, Integer> getNumberCounts() {
+        Map<Integer, Integer> numberCounts = new java.util.HashMap<>(Map.of(
+                1, 0,
+                2, 0,
+                3, 0,
+                4, 0,
+                5, 0,
+                6, 0
+        ));
+        for (int die : dice) {
+            int newCount = numberCounts.get(die) + 1;
+            numberCounts.replace(die, newCount);
+        }
+        return numberCounts;
+    }
+
     public int pair() {
-        int[] tallies = getTallies();
-        int at;
-        for (at = 0; at != 6; at++)
-            if (tallies[6 - at - 1] >= 2)
-                return (6 - at) * 2;
+        Map<Integer, Integer> numberCounts = getNumberCounts();
+        for (int highestPair = 6; highestPair > 0; highestPair--) {
+            if (numberCounts.get(highestPair) >= 2) {
+                return highestPair * 2;
+            }
+        }
         return 0;
     }
 
@@ -163,6 +181,3 @@ public class Yatzy {
             return 0;
     }
 }
-
-
-
