@@ -1,4 +1,5 @@
 import java.util.Map;
+
 public class Yatzy {
 
     protected int[] dice;
@@ -22,9 +23,9 @@ public class Yatzy {
 
     public int yatzy() {
         if (dice[0] == dice[1] &&
-            dice[1] == dice[2] &&
-            dice[2] == dice[3] &&
-            dice[3] == dice[4]) {
+                dice[1] == dice[2] &&
+                dice[2] == dice[3] &&
+                dice[3] == dice[4]) {
             return 50;
         }
         return 0;
@@ -62,17 +63,6 @@ public class Yatzy {
 
     public int sixes() {
         return simpleNumbers(6);
-    }
-
-    private int[] getTallies() {
-        // what does tallies mean?
-        int[] tallies = new int[6];
-        tallies[dice[0] - 1]++;
-        tallies[dice[1] - 1]++;
-        tallies[dice[2] - 1]++;
-        tallies[dice[3] - 1]++;
-        tallies[dice[4] - 1]++;
-        return tallies;
     }
 
     private Map<Integer, Integer> getNumberCounts() {
