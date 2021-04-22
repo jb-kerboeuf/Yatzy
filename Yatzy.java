@@ -91,8 +91,7 @@ public class Yatzy {
         return numberCounts;
     }
 
-    private int nOfAKind(int n) {
-        Map<Integer, Integer> numberCounts = getNumberCounts();
+    private int nOfAKind(int n, Map<Integer, Integer> numberCounts) {
         for (int dieValue = 6; dieValue > 0; dieValue--) {
             if (numberCounts.get(dieValue) >= n) {
                 return dieValue * n;
@@ -102,31 +101,28 @@ public class Yatzy {
     }
 
     public int pair() {
-        return nOfAKind(2);
+        return nOfAKind(2, getNumberCounts());
     }
 
     public int twoPairs() {
         Map<Integer, Integer> numberCounts = getNumberCounts();
-        int pairs = 0;
-        int score = 0;
-        for (int dieValue = 6; dieValue > 0; dieValue--) {
-            if (numberCounts.get(dieValue) >= 2) {
-                pairs ++;
-                score += dieValue * 2;
-            }
+        int scoreHighestPair = nOfAKind(2, numberCounts);
+        if (scoreHighestPair != 0) {
+            // we remove the highestPair dice values so we don't get the same result for secondHighestPair
+            numberCounts.replace(scoreHighestPair / 2, 0);
+            int scoreSecondHighestPair = nOfAKind(2, numberCounts);
+            if (scoreSecondHighestPair != 0)
+                return scoreHighestPair + scoreSecondHighestPair;
         }
-        if (pairs == 2)
-            return score;
-        else
-            return 0;
+        return 0;
     }
 
     public int threeOfAKind() {
-        return nOfAKind(3);
+        return nOfAKind(3, getNumberCounts());
     }
 
     public int fourOfAKind() {
-        return nOfAKind(4);
+        return nOfAKind(4, getNumberCounts());
     }
 
     public int smallStraight() {
