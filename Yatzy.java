@@ -91,14 +91,18 @@ public class Yatzy {
         return numberCounts;
     }
 
-    public int pair() {
+    private int nOfAKind(int n) {
         Map<Integer, Integer> numberCounts = getNumberCounts();
         for (int dieValue = 6; dieValue > 0; dieValue--) {
-            if (numberCounts.get(dieValue) >= 2) {
-                return dieValue * 2;
+            if (numberCounts.get(dieValue) >= n) {
+                return dieValue * n;
             }
         }
         return 0;
+    }
+
+    public int pair() {
+        return nOfAKind(2);
     }
 
     public int twoPairs() {
@@ -118,23 +122,11 @@ public class Yatzy {
     }
 
     public int threeOfAKind() {
-        Map<Integer, Integer> numberCounts = getNumberCounts();
-        for (int dieValue = 6; dieValue > 0; dieValue--) {
-            if (numberCounts.get(dieValue) >= 3) {
-                return dieValue * 3;
-            }
-        }
-        return 0;
+        return nOfAKind(3);
     }
 
     public int fourOfAKind() {
-        Map<Integer, Integer> numberCounts = getNumberCounts();
-        for (int dieValue = 6; dieValue > 0; dieValue--) {
-            if (numberCounts.get(dieValue) >= 4) {
-                return dieValue * 4;
-            }
-        }
-        return 0;
+        return nOfAKind(4);
     }
 
     public int smallStraight() {
