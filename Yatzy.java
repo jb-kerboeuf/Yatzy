@@ -93,9 +93,9 @@ public class Yatzy {
 
     public int pair() {
         Map<Integer, Integer> numberCounts = getNumberCounts();
-        for (int highestPair = 6; highestPair > 0; highestPair--) {
-            if (numberCounts.get(highestPair) >= 2) {
-                return highestPair * 2;
+        for (int dieValue = 6; dieValue > 0; dieValue--) {
+            if (numberCounts.get(dieValue) >= 2) {
+                return dieValue * 2;
             }
         }
         return 0;
@@ -105,10 +105,10 @@ public class Yatzy {
         Map<Integer, Integer> numberCounts = getNumberCounts();
         int pairs = 0;
         int score = 0;
-        for (int highestPair = 6; highestPair > 0; highestPair--) {
-            if (numberCounts.get(highestPair) >= 2) {
+        for (int dieValue = 6; dieValue > 0; dieValue--) {
+            if (numberCounts.get(dieValue) >= 2) {
                 pairs ++;
-                score += highestPair * 2;
+                score += dieValue * 2;
             }
         }
         if (pairs == 2)
@@ -118,18 +118,22 @@ public class Yatzy {
     }
 
     public int threeOfAKind() {
-        int[] tallies = getTallies();
-        for (int i = 0; i < 6; i++)
-            if (tallies[i] >= 3)
-                return (i + 1) * 3;
+        Map<Integer, Integer> numberCounts = getNumberCounts();
+        for (int dieValue = 6; dieValue > 0; dieValue--) {
+            if (numberCounts.get(dieValue) >= 3) {
+                return dieValue * 3;
+            }
+        }
         return 0;
     }
 
     public int fourOfAKind() {
-        int[] tallies = getTallies();
-        for (int i = 0; i < 6; i++)
-            if (tallies[i] >= 4)
-                return (i + 1) * 4;
+        Map<Integer, Integer> numberCounts = getNumberCounts();
+        for (int dieValue = 6; dieValue > 0; dieValue--) {
+            if (numberCounts.get(dieValue) >= 4) {
+                return dieValue * 4;
+            }
+        }
         return 0;
     }
 
