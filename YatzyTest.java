@@ -66,7 +66,7 @@ public class YatzyTest {
     }
 
     @Test
-    public void twoPairs_scores_sum_of_two_two_pairs() {
+    public void twoPairs_scores_sum_of_two_pairs() {
         assertEquals(16, new Yatzy(3, 3, 5, 4, 5).twoPairs());
         assertEquals(16, new Yatzy(3, 3, 5, 5, 5).twoPairs());
     }
@@ -86,21 +86,21 @@ public class YatzyTest {
     }
 
     @Test
-    public void smallStraight() {
+    public void smallStraight_scores_15_if_dice_values_from_1_to_5() {
         assertEquals(15, new Yatzy(1, 2, 3, 4, 5).smallStraight());
         assertEquals(15, new Yatzy(2, 3, 4, 5, 1).smallStraight());
         assertEquals(0, new Yatzy(1, 2, 2, 4, 5).smallStraight());
     }
 
     @Test
-    public void largeStraight() {
+    public void largeStraight_scores_20_if_dice_values_from_2_to_6() {
         assertEquals(20, new Yatzy(6, 2, 3, 4, 5).largeStraight());
         assertEquals(20, new Yatzy(2, 3, 4, 5, 6).largeStraight());
         assertEquals(0, new Yatzy(1, 2, 2, 4, 5).largeStraight());
     }
 
     @Test
-    public void fullHouse() {
+    public void fullHouse_scores_sum_of_pair_and_three_of_a_kind() {
         assertEquals(18, new Yatzy(6, 2, 2, 2, 6).fullHouse());
         assertEquals(22, new Yatzy(6, 6, 2, 2, 6).fullHouse());
         assertEquals(0, new Yatzy(2, 3, 4, 5, 6).fullHouse());
