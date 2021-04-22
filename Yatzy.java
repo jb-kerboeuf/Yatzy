@@ -130,23 +130,23 @@ public class Yatzy {
     }
 
     public int smallStraight() {
-        int[] tallies = getTallies();
-        if (tallies[0] == 1 &&
-                tallies[1] == 1 &&
-                tallies[2] == 1 &&
-                tallies[3] == 1 &&
-                tallies[4] == 1)
+        Map<Integer, Integer> numberCounts = getNumberCounts();
+        if (numberCounts.get(1) == 1 &&
+                numberCounts.get(2) == 1 &&
+                numberCounts.get(3) == 1 &&
+                numberCounts.get(4) == 1 &&
+                numberCounts.get(5) == 1)
             return 15;
         return 0;
     }
 
     public int largeStraight() {
-        int[] tallies = getTallies();
-        if (tallies[1] == 1 &&
-                tallies[2] == 1 &&
-                tallies[3] == 1 &&
-                tallies[4] == 1
-                && tallies[5] == 1)
+        Map<Integer, Integer> numberCounts = getNumberCounts();
+        if (numberCounts.get(2) == 1 &&
+                numberCounts.get(3) == 1 &&
+                numberCounts.get(4) == 1 &&
+                numberCounts.get(5) == 1 &&
+                numberCounts.get(6) == 1)
             return 20;
         return 0;
     }
