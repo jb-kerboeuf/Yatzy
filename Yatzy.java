@@ -33,13 +33,8 @@ public class Yatzy {
     }
 
     private int simpleNumbers(int num) {
-        int sum = 0;
-        for (int die : dice) {
-            if (die == num) {
-                sum += num;
-            }
-        }
-        return sum;
+        return streamDice.stream().reduce(0,
+                (sum, die) -> die == num ? sum + die : sum);
     }
 
     public int ones() {
