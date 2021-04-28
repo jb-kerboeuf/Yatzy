@@ -4,36 +4,26 @@ import java.util.Map;
 
 public class Yatzy {
 
-    protected List<Integer> streamDice;
-    // TO REMOVE
-    protected int[] dice;
+    protected List<Integer> dice;
 
     public Yatzy(int d1, int d2, int d3, int d4, int d5) {
-        streamDice = Arrays.asList(d1, d2, d3, d4, d5);
-
-        // TO REMOVE
-        dice = new int[5];
-        dice[0] = d1;
-        dice[1] = d2;
-        dice[2] = d3;
-        dice[3] = d4;
-        dice[4] = d5;
+        dice = Arrays.asList(d1, d2, d3, d4, d5);
     }
 
     public int chance() {
-        return streamDice.stream().reduce(0,
+        return dice.stream().reduce(0,
                 Integer::sum);
     }
 
     public int yatzy() {
-        if (streamDice.stream().allMatch(
-                streamDice.get(0)::equals))
+        if (dice.stream().allMatch(
+                dice.get(0)::equals))
             return 50;
         return 0;
     }
 
     private int simpleNumbers(int num) {
-        return streamDice.stream().reduce(0,
+        return dice.stream().reduce(0,
                 (sum, die) -> die == num ? sum + die : sum);
     }
 
