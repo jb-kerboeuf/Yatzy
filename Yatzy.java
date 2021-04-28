@@ -26,12 +26,9 @@ public class Yatzy {
     }
 
     public int yatzy() {
-        if (dice[0] == dice[1] &&
-                dice[1] == dice[2] &&
-                dice[2] == dice[3] &&
-                dice[3] == dice[4]) {
+        if (streamDice.stream().allMatch(
+                streamDice.get(0)::equals))
             return 50;
-        }
         return 0;
     }
 
