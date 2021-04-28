@@ -1,10 +1,17 @@
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public class Yatzy {
 
+    protected List<Integer> streamDice;
+    // TO REMOVE
     protected int[] dice;
 
     public Yatzy(int d1, int d2, int d3, int d4, int d5) {
+        streamDice = Arrays.asList(d1, d2, d3, d4, d5);
+
+        // TO REMOVE
         dice = new int[5];
         dice[0] = d1;
         dice[1] = d2;
@@ -14,11 +21,8 @@ public class Yatzy {
     }
 
     public int chance() {
-        int sum = 0;
-        for (int value : dice) {
-            sum += value;
-        }
-        return sum;
+        return streamDice.stream().reduce(0,
+                Integer::sum);
     }
 
     public int yatzy() {
